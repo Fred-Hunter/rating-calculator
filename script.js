@@ -15,11 +15,11 @@ AH = glicko.makePlayer();
 MH = glicko.makePlayer();
 
 const players = [
-	{ name: "Fred Hunter", glicko: FH },
-	{ name: "Josh Davis", glicko: JD },
-	{ name: "Alex Barlow-Doran", glicko: ABD },
-	{ name: "Adam Hulme", glicko: AH },
-	{ name: "Michael Hancock", glicko: MH },
+	{ name: "Alice Johnson", glicko: FH },
+	{ name: "Bob Smith", glicko: JD },
+	{ name: "Charlie Brown", glicko: ABD },
+	{ name: "Diana Prince", glicko: AH },
+	{ name: "Ethan Hunt", glicko: MH },
 ];
 
 const getPlayer = (name) => players.find((p) => p.name === name).glicko;
@@ -44,7 +44,7 @@ function showRankings() {
 
 function createMatches() {
     // Expecting: Player 1,Player 2,Result (w/l/d),week number
-    // Example: Fred Hunter,Josh Davis,w,3
+    // Example: Alice Johnson,Bob Smith,w,3
 	let table = document.getElementById("tableInput").value;
 	table = table.split("\n");
 	table = table.map((r) => r.split(",")); 
