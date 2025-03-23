@@ -26,7 +26,9 @@ function showRankings() {
 	rankingsHTML += "</ul>";
 
 	// Update rankings div
-	document.getElementById("rankings").innerHTML = rankingsHTML;
+	const rankingsDiv = document.getElementById("rankings");
+	rankingsDiv.innerHTML = rankingsHTML;
+	rankingsDiv.style.display = "block"; // Ensure the rankings section is visible
 }
 
 function createMatches() {
