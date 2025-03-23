@@ -9,27 +9,42 @@
     <body>
         <main>
             <form onSubmit="createMatches(); return false;"> 
-                <p>
-                    Please paste match data in the following format:
-                    <br>
-                    <strong>Player1 Name</strong>, <strong>Player2 Name</strong>, <strong>Result</strong>, <strong>Week</strong>
-                    <br>
-                    Example:
-                    <br>
-                    Alice Johnson,Bob Smith,w,3
-                </p>
                 <label for="separator">Select separator:</label>
                 <select id="separator">
                     <option value=",">Comma (,)</option>
                     <option value="\t">Tab</option>
                 </select>
+                <div id="instructions" class="expandable-content" style="display: none;">
+                    <p>
+                        Paste match data in the following format:
+                        <br>
+                        <strong>Player1 Name</strong>, <strong>Player2 Name</strong>, <strong>Result</strong>, <strong>Week</strong>
+                        <br>
+                        Example:
+                        <br>
+                        Alice Johnson,Bob Smith,w,3
+                    </p>
+                </div>
                 <textarea id="tableInput" placeholder="Paste your match data here..."></textarea>
                 <button type="submit">Submit</button>
+                <button type="button" id="toggleInstructions" class="expandable-button">Show Instructions</button>
             </form>
             <div id="rankings" style="display: none;">
                 <h3>Rankings</h3>
                 <ul></ul>
             </div>
         </main>
+        <script>
+            document.getElementById("toggleInstructions").addEventListener("click", function () {
+                const instructions = document.getElementById("instructions");
+                if (instructions.style.display === "none") {
+                    instructions.style.display = "block";
+                    this.textContent = "Hide Instructions";
+                } else {
+                    instructions.style.display = "none";
+                    this.textContent = "Show Instructions";
+                }
+            });
+        </script>
     </body>
 </html>
