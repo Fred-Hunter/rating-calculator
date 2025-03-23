@@ -7,20 +7,14 @@ const settings = {
 };
 const glicko = new glicko2.Glicko2(settings);
 
-// Make players
-FH = glicko.makePlayer();
-JD = glicko.makePlayer();
-ABD = glicko.makePlayer();
-AH = glicko.makePlayer();
-MH = glicko.makePlayer();
+// Remove default player creation
+// FH = glicko.makePlayer();
+// JD = glicko.makePlayer();
+// ABD = glicko.makePlayer();
+// AH = glicko.makePlayer();
+// MH = glicko.makePlayer();
 
-const players = [
-	{ name: "Alice Johnson", glicko: FH },
-	{ name: "Bob Smith", glicko: JD },
-	{ name: "Charlie Brown", glicko: ABD },
-	{ name: "Diana Prince", glicko: AH },
-	{ name: "Ethan Hunt", glicko: MH },
-];
+const players = []; // Start with an empty players array
 
 const getPlayer = (name) => players.find((p) => p.name === name).glicko;
 
