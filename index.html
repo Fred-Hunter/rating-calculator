@@ -7,6 +7,15 @@
 
     <body>
         <form onSubmit="createMatches(); return false;"> 
+            <p>
+                Please paste match data in the following comma-separated format:
+                <br>
+                <strong>Player1 Name</strong>, <strong>Player2 Name</strong>, <strong>Result</strong>, <strong>Week</strong>
+                <br>
+                Example:
+                <br>
+                Fred Hunter,Josh Davis,1,1
+            </p>
             <textarea id="tableInput" style="width: 500px; height: 500px;"></textarea>
             <button type="submit">Submit</button>
         </form>

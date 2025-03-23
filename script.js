@@ -43,24 +43,24 @@ function showRankings() {
 }
 
 function createMatches() {
-	// Create 2d array from string
-	//let table = prompt('Paste table in here:');
+    // Expecting: Player 1,Player 2,Result (w/l/d),week number
+    // Example: Fred Hunter,Josh Davis,w,3
 	let table = document.getElementById("tableInput").value;
 	table = table.split("\n");
-	table = table.map((r) => r.split("\t"));
+	table = table.map((r) => r.split(",")); 
 	table.shift();
 
 	const matches = [];
-	const weeks = new Set(table.map((t) => t[4])).size;
+	const weeks = new Set(table.map((t) => t[3])).size;
 
 	for (let i = 1; i <= weeks; i++) {
 		console.log(`\nRankings after week ${i}`);
 
-		const records = table.filter((r) => +r[4] === i);
+		const records = table.filter((r) => +r[3] === i);
 
 		// Create matches
 		records.forEach((r) => {
-			let newMatch = [getPlayer(r[0]), getPlayer(r[2]), +r[3]];
+			let newMatch = [getPlayer(r[0]), getPlayer(r[1]), +r[2]];
 			matches.push(newMatch);
 		});
 
