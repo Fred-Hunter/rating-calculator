@@ -58,6 +58,17 @@ function createMatches() {
 
 		const records = table.filter((r) => +r[3] === i);
 
+		 // Add new players dynamically
+		records.forEach((r) => {
+			const [player1Name, player2Name] = [r[0], r[1]];
+			if (!players.some((p) => p.name === player1Name)) {
+				players.push({ name: player1Name, glicko: glicko.makePlayer() });
+			}
+			if (!players.some((p) => p.name === player2Name)) {
+				players.push({ name: player2Name, glicko: glicko.makePlayer() });
+			}
+		});
+
 		// Create matches
 		records.forEach((r) => {
 			let newMatch = [getPlayer(r[0]), getPlayer(r[1]), getScore(r[2])];
