@@ -25,16 +25,21 @@ const players = [
 const getPlayer = (name) => players.find((p) => p.name === name).glicko;
 
 function showRankings() {
-	//Sort players
+	// Sort players
 	players.sort((pl1, pl2) => pl2.glicko.getRating() - pl1.glicko.getRating());
 
-	//Display ratings
+	// Build rankings HTML
+	let rankingsHTML = "<h3>Rankings</h3><ul>";
 	for (let i = 0, len = players.length; i < len; i++) {
 		const player = players[i];
 		const rating = player.glicko.getRating().toFixed(1);
 		const deviation = player.glicko.getRd().toFixed(1);
-		console.log(`${player.name}: ${rating} (rd: ${deviation})`);
+		rankingsHTML += `<li>${player.name}: ${rating} (rd: ${deviation})</li>`;
 	}
+	rankingsHTML += "</ul>";
+
+	// Update rankings div
+	document.getElementById("rankings").innerHTML = rankingsHTML;
 }
 
 function createMatches() {
