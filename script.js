@@ -60,11 +60,24 @@ function createMatches() {
 
 		// Create matches
 		records.forEach((r) => {
-			let newMatch = [getPlayer(r[0]), getPlayer(r[1]), +r[2]];
+			let newMatch = [getPlayer(r[0]), getPlayer(r[1]), getScore(r[2])];
 			matches.push(newMatch);
 		});
 
 		glicko.updateRatings(matches);
 		showRankings();
 	}
+}
+
+function getScore(scoreText) {
+    switch (scoreText) {
+        case "w":
+            return 1;
+        case "l":
+            return 0;
+        case "d":
+            return 0.5;
+        default:
+            throw new Error("Invalid score text");
+    }
 }
