@@ -7,14 +7,7 @@ const settings = {
 };
 const glicko = new glicko2.Glicko2(settings);
 
-// Remove default player creation
-// FH = glicko.makePlayer();
-// JD = glicko.makePlayer();
-// ABD = glicko.makePlayer();
-// AH = glicko.makePlayer();
-// MH = glicko.makePlayer();
-
-const players = []; // Start with an empty players array
+const players = [];
 
 const getPlayer = (name) => players.find((p) => p.name === name).glicko;
 
@@ -37,41 +30,43 @@ function showRankings() {
 }
 
 function createMatches() {
-    // Expecting: Player 1,Player 2,Result (w/l/d),week number
-    // Example: Alice Johnson,Bob Smith,w,3
-	let table = document.getElementById("tableInput").value;
-	table = table.split("\n");
-	table = table.map((r) => r.split(",")); 
-	table.shift();
+    // Get the selected separator
+    const separator = document.getElementById("separator").value;
 
-	const matches = [];
-	const weeks = new Set(table.map((t) => t[3])).size;
+    // Get and parse the table input
+    let table = document.getElementById("tableInput").value;
+    table = table.split("\n");
+    table = table.map((r) => r.split(separator));
+    table.shift();
 
-	for (let i = 1; i <= weeks; i++) {
-		console.log(`\nRankings after week ${i}`);
+    const matches = [];
+    const weeks = new Set(table.map((t) => t[3])).size;
 
-		const records = table.filter((r) => +r[3] === i);
+    for (let i = 1; i <= weeks; i++) {
+        console.log(`\nRankings after week ${i}`);
 
-		 // Add new players dynamically
-		records.forEach((r) => {
-			const [player1Name, player2Name] = [r[0], r[1]];
-			if (!players.some((p) => p.name === player1Name)) {
-				players.push({ name: player1Name, glicko: glicko.makePlayer() });
-			}
-			if (!players.some((p) => p.name === player2Name)) {
-				players.push({ name: player2Name, glicko: glicko.makePlayer() });
-			}
-		});
+        const records = table.filter((r) => +r[3] === i);
 
-		// Create matches
-		records.forEach((r) => {
-			let newMatch = [getPlayer(r[0]), getPlayer(r[1]), getScore(r[2])];
-			matches.push(newMatch);
-		});
+        // Add new players dynamically
+        records.forEach((r) => {
+            const [player1Name, player2Name] = [r[0], r[1]];
+            if (!players.some((p) => p.name === player1Name)) {
+                players.push({ name: player1Name, glicko: glicko.makePlayer() });
+            }
+            if (!players.some((p) => p.name === player2Name)) {
+                players.push({ name: player2Name, glicko: glicko.makePlayer() });
+            }
+        });
 
-		glicko.updateRatings(matches);
-		showRankings();
-	}
+        // Create matches
+        records.forEach((r) => {
+            let newMatch = [getPlayer(r[0]), getPlayer(r[1]), getScore(r[2])];
+            matches.push(newMatch);
+        });
+
+        glicko.updateRatings(matches);
+        showRankings();
+    }
 }
 
 function getScore(scoreText) {

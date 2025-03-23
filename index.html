@@ -8,7 +8,7 @@
     <body>
         <form onSubmit="createMatches(); return false;"> 
             <p>
-                Please paste match data in the following comma-separated format:
+                Please paste match data in the following format:
                 <br>
                 <strong>Player1 Name</strong>, <strong>Player2 Name</strong>, <strong>Result</strong>, <strong>Week</strong>
                 <br>
@@ -16,6 +16,11 @@
                 <br>
                 Alice Johnson,Bob Smith,w,3
             </p>
+            <label for="separator">Select separator:</label>
+            <select id="separator">
+                <option value=",">Comma (,)</option>
+                <option value="\t">Tab</option>
+            </select>
             <textarea id="tableInput" style="width: 500px; height: 500px;"></textarea>
             <button type="submit">Submit</button>
         </form>
