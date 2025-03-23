@@ -1,0 +1,5 @@
+{
+  "dependencies": {
+    "glicko2": "^0.8.7"
+  }
+}
