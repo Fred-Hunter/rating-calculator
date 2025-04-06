@@ -23,7 +23,7 @@ main {
 }
 
 form {
-    column-gap: 8px;
+    row-gap: 8px;
     margin-bottom: 30px;
     background-color: #ffffff;
     padding: 20px;
