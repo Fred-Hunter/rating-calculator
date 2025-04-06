@@ -39,15 +39,21 @@ function createMatches() {
     let table = document.getElementById("tableInput").value;
     table = table.split("\n");
     table = table.map((r) => r.split(separator));
-    table.shift();
+
+    const defaultWeek = "1";
+    table.forEach((r) => {
+        if (r.length === 2) {
+            r.push(defaultWeek);
+        }
+    });
 
     const matches = [];
-    const weeks = new Set(table.map((t) => t[3])).size;
+    const weeks = [...new Set(table.map((t) => t[3]))];
 
-    for (let i = 1; i <= weeks; i++) {
-        console.log(`\nRankings after week ${i}`);
+    weeks.forEach((weekNumber) => {
+        console.log(`\nRankings after week ${weekNumber}`);
 
-        const records = table.filter((r) => +r[3] === i);
+        const records = table.filter((r) => r[3] === weekNumber);
 
         // Add new players dynamically
         records.forEach((r) => {
@@ -68,7 +74,7 @@ function createMatches() {
 
         glicko.updateRatings(matches);
         showRankings();
-    }
+    });
 }
 
 function getScore(scoreText) {
