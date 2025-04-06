@@ -191,3 +191,12 @@ select {
     font-size: 14px;
     color: #333;
 }
+
+.example {
+    font-family: monospace;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    color: #f9f9f9;
+    background-color: #333;
+}
