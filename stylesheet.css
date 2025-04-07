@@ -1,8 +1,8 @@
 body {
-    font-family: 'Georgia', serif;
+    font-family: 'Arial', sans-serif;
     margin: 0;
     padding: 0;
-    background-color: #fdfdfd;
+    background-color: #f9f9f9;
     color: #333;
     line-height: 1.8;
     display: flex;
@@ -22,9 +22,18 @@ main {
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
+h1 {
+    font-size: 28px;
+    font-weight: bold;
+    color: #ff206e;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
 form {
     display: grid;
     column-gap: 8px;
+    row-gap: 8px;
     margin-bottom: 30px;
     background-color: #ffffff;
     padding: 20px;
@@ -51,7 +60,7 @@ textarea {
 }
 
 button {
-    background-color: #00509e;
+    background-color: #ff206e;
     color: #ffffff;
     border: none;
     padding: 10px 20px;
@@ -63,7 +72,7 @@ button {
 }
 
 button:hover {
-    background-color: #003f7d;
+    background-color: #e01a63;
 }
 
 select {
@@ -85,8 +94,8 @@ select {
 
 #rankings h3 {
     margin-top: 0;
-    color: #00509e;
-    font-family: 'Georgia', serif;
+    color: #ff206e;
+    font-family: 'Arial', sans-serif;
     font-size: 20px;
     text-align: center;
 }
@@ -102,6 +111,7 @@ select {
     border-bottom: 1px solid #eee;
     font-size: 16px;
     font-family: 'Courier New', monospace;
+    color: #333;
 }
 
 #rankings li:last-child {
@@ -182,6 +192,7 @@ select {
     padding: 10px;
     border: 1px solid #ddd;
     border-radius: 4px;
-    color: #f9f9f9;
-    background-color: #333;
+    color: #ff206e;
+    background-color: #ffffff;
+    font-weight: bold;
 }
