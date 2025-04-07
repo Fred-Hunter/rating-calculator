@@ -63,6 +63,7 @@ textarea {
     font-size: 14px;
     background-color: #f9f9f9;
     color: #333;
+    box-sizing: border-box; /* Ensure padding and border are included in the width */
 }
 
 button {
