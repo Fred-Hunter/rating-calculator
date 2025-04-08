@@ -97,3 +97,14 @@ function getScore(scoreText) {
             throw new Error("Invalid score text");
     }
 }
+
+document.getElementById("toggleInstructions").addEventListener("click", function () {
+    const instructions = document.getElementById("instructions");
+    if (instructions.style.display === "none") {
+        instructions.style.display = "block";
+        this.textContent = "Hide Instructions";
+    } else {
+        instructions.style.display = "none";
+        this.textContent = "Show Instructions";
+    }
+});
