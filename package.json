@@ -1,5 +1,15 @@
 {
   "dependencies": {
     "glicko2": "^0.8.7"
+  },
+  "devDependencies": {
+    "webpack": "^5.99.3",
+    "webpack-cli": "^6.0.1",
+    "babel-loader": "^9.1.2",
+    "@babel/core": "^7.22.9",
+    "@babel/preset-env": "^7.22.9"
+  },
+  "scripts": {
+    "build": "webpack"
   }
 }

@@ -1,3 +1,5 @@
+const Glicko2 = require("glicko2").Glicko2;
+
 const settings = {
 	tau: 0.5,
 	rpd: 604800,
@@ -5,7 +7,7 @@ const settings = {
 	rd: 300,
 	vol: 0.06,
 };
-const glicko = new glicko2.Glicko2(settings);
+const glicko = new Glicko2(settings);
 
 const players = [];
 
@@ -43,7 +45,9 @@ function showRankings() {
 	rankingsDiv.style.display = "block";
 }
 
-function createMatches() {
+function createMatches(event) {
+    if (event) event.preventDefault(); // Prevent the default form submission behavior
+
     // Get the selected separator
     const separator = document.getElementById("separator").value;
 
@@ -104,6 +108,7 @@ function getScore(scoreText) {
 
 function addEventListeners() { 
     addInstructionToggleListener();
+    addFormListener();
 }
 
 function addInstructionToggleListener() {
@@ -116,5 +121,14 @@ function addInstructionToggleListener() {
             instructions.style.display = "none";
             this.textContent = "Show Instructions";
         }
+    });
+}
+
+function addFormListener() {
+    const form = document.getElementById("form-ingest");
+    form.addEventListener("submit", (event) => {
+        event.preventDefault();
+        createMatches(event);
+        return false;
     });
 }
