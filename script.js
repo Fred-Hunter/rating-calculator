@@ -15,20 +15,28 @@ function showRankings() {
 	// Sort players
 	players.sort((pl1, pl2) => pl2.glicko.getRating() - pl1.glicko.getRating());
 
-	// Build rankings HTML
-	let rankingsHTML = "<h3>Rankings</h3><ul>";
-	for (let i = 0, len = players.length; i < len; i++) {
-		const player = players[i];
+	// Get rankings div and clear its content
+	const rankingsDiv = document.getElementById("rankings");
+	rankingsDiv.innerHTML = "";
+
+	// Create and append the title
+	const title = document.createElement("h3");
+	title.textContent = "Rankings";
+	rankingsDiv.appendChild(title);
+
+	// Create and append the list
+	const list = document.createElement("ul");
+	players.forEach((player) => {
+		const listItem = document.createElement("li");
 		const rating = player.glicko.getRating().toFixed(1);
 		const deviation = player.glicko.getRd().toFixed(1);
-		rankingsHTML += `<li>${player.name}: ${rating} (rd: ${deviation})</li>`;
-	}
-	rankingsHTML += "</ul>";
+		listItem.textContent = `${player.name}: ${rating} (rd: ${deviation})`;
+		list.appendChild(listItem);
+	});
+	rankingsDiv.appendChild(list);
 
-	// Update rankings div
-	const rankingsDiv = document.getElementById("rankings");
-	rankingsDiv.innerHTML = rankingsHTML;
-	rankingsDiv.style.display = "block"; // Ensure the rankings section is visible
+	// Ensure the rankings section is visible
+	rankingsDiv.style.display = "block";
 }
 
 function createMatches() {
