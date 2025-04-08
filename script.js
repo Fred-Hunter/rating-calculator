@@ -11,6 +11,10 @@ const players = [];
 
 const getPlayer = (name) => players.find((p) => p.name === name).glicko;
 
+window.onload = (e) => {
+    addEventListeners();
+};
+
 function showRankings() {
 	// Sort players
 	players.sort((pl1, pl2) => pl2.glicko.getRating() - pl1.glicko.getRating());
@@ -98,13 +102,19 @@ function getScore(scoreText) {
     }
 }
 
-document.getElementById("toggleInstructions").addEventListener("click", function () {
-    const instructions = document.getElementById("instructions");
-    if (instructions.style.display === "none") {
-        instructions.style.display = "block";
-        this.textContent = "Hide Instructions";
-    } else {
-        instructions.style.display = "none";
-        this.textContent = "Show Instructions";
-    }
-});
+function addEventListeners() { 
+    addInstructionToggleListener();
+}
+
+function addInstructionToggleListener() {
+    document.getElementById("toggleInstructions").addEventListener("click", function () {
+        const instructions = document.getElementById("instructions");
+        if (instructions.style.display === "none") {
+            instructions.style.display = "block";
+            this.textContent = "Hide Instructions";
+        } else {
+            instructions.style.display = "none";
+            this.textContent = "Show Instructions";
+        }
+    });
+}
