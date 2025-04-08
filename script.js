@@ -18,19 +18,15 @@ window.onload = (e) => {
 };
 
 function showRankings() {
-	// Sort players
 	players.sort((pl1, pl2) => pl2.glicko.getRating() - pl1.glicko.getRating());
 
-	// Get rankings div and clear its content
 	const rankingsDiv = document.getElementById("rankings");
 	rankingsDiv.innerHTML = "";
 
-	// Create and append the title
 	const title = document.createElement("h3");
 	title.textContent = "Rankings";
 	rankingsDiv.appendChild(title);
 
-	// Create and append the list
 	const list = document.createElement("ul");
 	players.forEach((player) => {
 		const listItem = document.createElement("li");
@@ -41,17 +37,12 @@ function showRankings() {
 	});
 	rankingsDiv.appendChild(list);
 
-	// Ensure the rankings section is visible
 	rankingsDiv.style.display = "block";
 }
 
 function createMatches(event) {
-    if (event) event.preventDefault(); // Prevent the default form submission behavior
-
-    // Get the selected separator
     const separator = document.getElementById("separator").value;
 
-    // Get and parse the table input
     let table = document.getElementById("tableInput").value;
     table = table.split("\n");
     table = table.map((r) => r.split(separator));
