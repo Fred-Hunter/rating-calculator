@@ -36,12 +36,6 @@ jobs:
         npm install
         npx webpack
 
-    - name: Deploy to GitHub Pages
-      uses: peaceiris/actions-gh-pages@v3
-      with:
-        github_token: ${{ secrets.GITHUB_TOKEN }}
-        publish_dir: ./dist
-
     - name: Setup Pages
       uses: actions/configure-pages@v5
 
