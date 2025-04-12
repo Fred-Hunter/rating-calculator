@@ -3,6 +3,7 @@
     --primary-hover-color: #e01a63;
     --secondary-color: #ffbdd4;
     --background-color: #ffffff;
+    --dots-background-color: #fae9ef;
     --text-color: #333;
     --border-color: #ffbdd4;
     --form-background-color: #ffe5ee;
@@ -12,7 +13,10 @@ body {
     font-family: 'Arial', sans-serif;
     margin: 0;
     padding: 0;
-    background-color: var(--background-color);
+    background-color: var(--dots-background-color);
+    background-image: radial-gradient(circle, #ffffff 25%, transparent 20%), radial-gradient(circle, #ffffff 25%, transparent 20%);
+    background-size: 160px 160px;
+    background-position: 0 0, 80px 80px;
     color: var(--text-color);
     line-height: 1.8;
     display: flex;
