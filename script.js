@@ -62,7 +62,56 @@ function loadAndProcessMatches() {
     const storedMatches = loadMatches();
     if (storedMatches.length > 0) {
         processMatches(storedMatches);
+        updateMatchesTable(storedMatches);
     }
+}
+
+function updateMatchesTable(matches) {
+    const tableContainer = document.getElementById("matchesTableContainer");
+    const tableBody = document.getElementById("matchesTable").querySelector("tbody");
+
+    // Clear existing rows
+    tableBody.innerHTML = "";
+
+    // Add rows for each match
+    matches.forEach((match, index) => {
+        const row = document.createElement("tr");
+
+        const player1Cell = document.createElement("td");
+        player1Cell.textContent = match.player1Name;
+        row.appendChild(player1Cell);
+
+        const player2Cell = document.createElement("td");
+        player2Cell.textContent = match.player2Name;
+        row.appendChild(player2Cell);
+
+        const resultCell = document.createElement("td");
+        resultCell.textContent = match.result;
+        row.appendChild(resultCell);
+
+        const weekCell = document.createElement("td");
+        weekCell.textContent = match.week || "1";
+        row.appendChild(weekCell);
+
+        const actionsCell = document.createElement("td");
+        const deleteButton = document.createElement("button");
+        deleteButton.textContent = "Remove";
+        deleteButton.addEventListener("click", () => removeMatch(index));
+        actionsCell.appendChild(deleteButton);
+        row.appendChild(actionsCell);
+
+        tableBody.appendChild(row);
+    });
+
+    // Show the table container if there are matches
+    tableContainer.style.display = matches.length > 0 ? "block" : "none";
+}
+
+function removeMatch(index) {
+    const matches = loadMatches();
+    matches.splice(index, 1); // Remove the match at the specified index
+    saveMatches(matches); // Save the updated matches
+    loadAndProcessMatches(); // Reprocess matches and update the table and rankings
 }
 
 function createMatches(event) {
