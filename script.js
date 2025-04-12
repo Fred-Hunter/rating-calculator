@@ -1,20 +1,38 @@
 const Glicko2 = require("glicko2").Glicko2;
 
-const settings = {
-	tau: 0.5,
-	rpd: 604800,
-	rating: 1500,
-	rd: 300,
-	vol: 0.06,
-};
-const glicko = new Glicko2(settings);
+let glicko;
+let players;
 
-const players = [];
+initGlicko();
+
+function initGlicko() {
+    const settings = {
+        tau: 0.5,
+        rpd: 604800,
+        rating: 1500,
+        rd: 300,
+        vol: 0.06,
+    };
+    glicko = new Glicko2(settings);
+    
+    players = [];
+}
+
+function loadMatches() {
+    const storedMatches = localStorage.getItem("matches");
+    return storedMatches ? JSON.parse(storedMatches) : [];
+}
+
+
+function saveMatches(matches) {
+    localStorage.setItem("matches", JSON.stringify(matches));
+}
 
 const getPlayer = (name) => players.find((p) => p.name === name).glicko;
 
 window.onload = (e) => {
     addEventListeners();
+    loadAndProcessMatches();
 };
 
 function showRankings() {
@@ -40,7 +58,16 @@ function showRankings() {
 	rankingsDiv.style.display = "block";
 }
 
+function loadAndProcessMatches() {
+    const storedMatches = loadMatches();
+    if (storedMatches.length > 0) {
+        processMatches(storedMatches);
+    }
+}
+
 function createMatches(event) {
+    if (event) event.preventDefault();
+
     const separator = document.getElementById("separator").value;
 
     let table = document.getElementById("tableInput").value;
@@ -54,17 +81,37 @@ function createMatches(event) {
         }
     });
 
-    const matches = [];
-    const weeks = [...new Set(table.map((t) => t[3]))];
+    const newMatches = [];
+    table.forEach((r) => {
+        const [player1Name, player2Name, result, week] = r;
+        newMatches.push({ player1Name, player2Name, result, week });
+    });
+
+    if (newMatches.some((m) => !m.player1Name || !m.player2Name || !m.result)) {
+        return loadAndProcessMatches();
+    }
+
+    const storedMatches = loadMatches();
+    const allMatches = [...storedMatches, ...newMatches];
+    saveMatches(allMatches);
+
+    loadAndProcessMatches();
+}
+
+function processMatches(matches) {
+    // Refresh glicko
+    initGlicko();
+
+    const weeks = [...new Set(matches.map((m) => m.week || "1"))];
 
     weeks.forEach((weekNumber) => {
         console.log(`\nRankings after week ${weekNumber}`);
 
-        const records = table.filter((r) => r[3] === weekNumber);
+        const records = matches.filter((m) => m.week === weekNumber);
 
         // Add new players dynamically
         records.forEach((r) => {
-            const [player1Name, player2Name] = [r[0], r[1]];
+            const { player1Name, player2Name } = r;
             if (!players.some((p) => p.name === player1Name)) {
                 players.push({ name: player1Name, glicko: glicko.makePlayer() });
             }
@@ -74,14 +121,16 @@ function createMatches(event) {
         });
 
         // Create matches
-        records.forEach((r) => {
-            let newMatch = [getPlayer(r[0]), getPlayer(r[1]), getScore(r[2])];
-            matches.push(newMatch);
-        });
+        const glickoMatches = records.map((r) => [
+            getPlayer(r.player1Name),
+            getPlayer(r.player2Name),
+            getScore(r.result),
+        ]);
 
-        glicko.updateRatings(matches);
-        showRankings();
+        glicko.updateRatings(glickoMatches);
     });
+
+    showRankings();
 }
 
 function getScore(scoreText) {
