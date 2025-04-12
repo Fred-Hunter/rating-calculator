@@ -103,15 +103,14 @@ function updateMatchesTable(matches) {
         tableBody.appendChild(row);
     });
 
-    // Show the table container if there are matches
     tableContainer.style.display = matches.length > 0 ? "block" : "none";
 }
 
 function removeMatch(index) {
     const matches = loadMatches();
-    matches.splice(index, 1); // Remove the match at the specified index
-    saveMatches(matches); // Save the updated matches
-    loadAndProcessMatches(); // Reprocess matches and update the table and rankings
+    matches.splice(index, 1);
+    saveMatches(matches);
+    loadAndProcessMatches();
 }
 
 function createMatches(event) {
