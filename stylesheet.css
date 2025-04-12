@@ -1,24 +1,24 @@
 :root {
-    --primary-color: #ff206e;
-    --primary-hover-color: #c40b4f;
-    --secondary-color: #ffbdd4;
-    --secondary-hover-color: #fd9bbd;
-    --background-color: #ffffff;
-    --dots-background-color: #ffedf5;
-    --text-color: #333;
-    --border-color: #ffbdd4;
-    --form-background-color: #ffe5ee;
+    --primary-colour: #ff206e;
+    --primary-hover-colour: #c40b4f;
+    --secondary-colour: #ffbdd4;
+    --secondary-hover-colour: #fd9bbd;
+    --background-colour: #ffffff;
+    --dots-background-colour: #ffedf5;
+    --text-colour: #333;
+    --border-colour: #ffbdd4;
+    --form-background-colour: #ffe5ee;
 }
 
 body {
     font-family: 'Arial', sans-serif;
     margin: 0;
     padding: 0;
-    background-color: var(--dots-background-color);
+    background-color: var(--dots-background-colour);
     background-image: radial-gradient(circle, #ffffff 25%, transparent 20%), radial-gradient(circle, #ffffff 25%, transparent 20%);
     background-size: 160px 160px;
     background-position: 0 0, 80px 80px;
-    color: var(--text-color);
+    color: var(--text-colour);
     line-height: 1.8;
     display: flex;
     flex-direction: column;
@@ -30,8 +30,8 @@ body {
 main {
     width: 90%;
     max-width: 800px;
-    background-color: var(--background-color);
-    border: 1px solid var(--primary-color);
+    background-color: var(--background-colour);
+    border: 1px solid var(--primary-colour);
     border-radius: 8px;
     padding: 20px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
@@ -40,7 +40,7 @@ main {
 h1 {
     font-size: 28px;
     font-weight: bold;
-    color: var(--primary-color);
+    color: var(--primary-colour);
     text-align: center;
     margin-bottom: 20px;
 }
@@ -50,7 +50,7 @@ form {
     grid-template-columns: 1fr;
     row-gap: 8px;
     margin-bottom: 30px;
-    background-color: var(--form-background-color);
+    background-color: var(--form-background-colour);
     padding: 20px;
     border-radius: 6px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
@@ -72,59 +72,59 @@ textarea {
     width: 100%;
     height: 150px;
     padding: 10px;
-    border: 1px solid var(--secondary-color);
+    border: 1px solid var(--secondary-colour);
     border-radius: 4px;
     font-family: 'Courier New', monospace;
     font-size: 14px;
-    background-color: var(--background-color);
-    color: var(--text-color);
+    background-color: var(--background-colour);
+    color: var(--text-colour);
     box-sizing: border-box; 
 }
 
 button {
-    background-color: var(--primary-color);
-    color: var(--background-color);
+    background-color: var(--primary-colour);
+    color: var(--background-colour);
     border: none;
     padding: 10px 20px;
     border-radius: 4px;
     cursor: pointer;
     font-size: 16px;
-    transition: background-color 0.3s ease;
+    transition: background-colour 0.3s ease;
     max-width: 180px;
 }
 
 .delete-button {
-    background-color: var(--secondary-color);
+    background-color: var(--secondary-colour);
 }
 
 .delete-button:hover {
-    background-color: var(--secondary-hover-color);
+    background-color: var(--secondary-hover-colour);
 }
 
 button:hover {
-    background-color: var(--primary-hover-color);
+    background-color: var(--primary-hover-colour);
 }
 
 select {
     padding: 5px;
-    border: 1px solid var(--secondary-color);
+    border: 1px solid var(--secondary-colour);
     border-radius: 4px;
-    background-color: var(--background-color);
-    color: var(--text-color);
+    background-color: var(--background-colour);
+    color: var(--text-colour);
     font-size: 14px;
 }
 
 #rankings {
-    background-color: var(--background-color);
+    background-color: var(--background-colour);
     padding: 20px;
     border-radius: 8px;
-    border: 1px solid var(--border-color);
+    border: 1px solid var(--border-colour);
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
 #rankings h3 {
     margin-top: 0;
-    color: var(--primary-color);
+    color: var(--primary-colour);
     font-family: 'Arial', sans-serif;
     font-size: 20px;
     text-align: center;
@@ -138,10 +138,10 @@ select {
 
 #rankings li {
     padding: 10px 0;
-    border-bottom: 1px solid var(--border-color);
+    border-bottom: 1px solid var(--border-colour);
     font-size: 16px;
     font-family: 'Courier New', monospace;
-    color: var(--text-color);
+    color: var(--text-colour);
 }
 
 #rankings li:last-child {
@@ -167,7 +167,7 @@ select {
     left: 50%;
     transform: translateX(-50%);
     background-color: #333;
-    color: var(--background-color);
+    color: var(--background-colour);
     padding: 8px 12px;
     border-radius: 4px;
     font-size: 12px;
@@ -210,20 +210,20 @@ select {
 .expandable-content {
     margin-top: 10px;
     padding: 10px;
-    border: 1px solid var(--secondary-color);
+    border: 1px solid var(--secondary-colour);
     border-radius: 4px;
-    background-color: var(--background-color);
+    background-color: var(--background-colour);
     font-size: 14px;
-    color: var(--text-color);
+    color: var(--text-colour);
 }
 
 .example {
     font-family: monospace;
     padding: 10px;
-    border: 1px solid var(--secondary-color);
+    border: 1px solid var(--secondary-colour);
     border-radius: 4px;
-    color: var(--primary-color);
-    background-color: var(--background-color);
+    color: var(--primary-colour);
+    background-color: var(--background-colour);
     font-weight: bold;
 }
 
