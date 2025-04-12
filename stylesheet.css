@@ -114,7 +114,11 @@ select {
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
-#rankings h3 {
+#matchesTableContainer {
+    padding-top: 20px;
+}
+
+h3 {
     margin-top: 0;
     color: var(--primary-colour);
     font-family: 'Arial', sans-serif;
