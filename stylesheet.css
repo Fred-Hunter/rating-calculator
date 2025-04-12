@@ -81,8 +81,9 @@ textarea {
 }
 
 button {
-    background-color: var(--primary-colour);
-    color: var(--background-colour);
+    background-color: var(--secondary-colour);
+    color: var(--primary-colour);
+    font-weight: bold;
     border: none;
     padding: 10px 20px;
     border-radius: 4px;
@@ -92,8 +93,18 @@ button {
     max-width: 180px;
 }
 
+button.primary-button {
+    background-color: var(--primary-colour);
+    color: var(--background-colour);
+}
+
+button.primary-button:hover {
+    background-color: var(--primary-hover-colour);
+}
+
 button:hover {
     background-color: var(--primary-hover-colour);
+    color: var(--background-colour);
 }
 
 select {
