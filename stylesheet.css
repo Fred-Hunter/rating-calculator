@@ -21,7 +21,6 @@ body {
     color: var(--text-colour);
     line-height: 1.8;
     display: flex;
-    flex-direction: column;
     align-items: center;
     justify-content: center;
     min-height: 100vh;
