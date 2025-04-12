@@ -149,6 +149,7 @@ function getScore(scoreText) {
 function addEventListeners() { 
     addInstructionToggleListener();
     addFormListener();
+    addClearMatchesListener();
 }
 
 function addInstructionToggleListener() {
@@ -171,4 +172,14 @@ function addFormListener() {
         createMatches(event);
         return false;
     });
+}
+
+function clearMatches() {
+    localStorage.removeItem("matches");
+    initGlicko();
+    document.getElementById("rankings").style.display = "none";
+}
+
+function addClearMatchesListener() {
+    document.getElementById("clearMatches").addEventListener("click", clearMatches);
 }
