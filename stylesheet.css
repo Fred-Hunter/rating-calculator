@@ -93,14 +93,6 @@ button {
     max-width: 180px;
 }
 
-.delete-button {
-    background-color: var(--secondary-colour);
-}
-
-.delete-button:hover {
-    background-color: var(--secondary-hover-colour);
-}
-
 button:hover {
     background-color: var(--primary-hover-colour);
 }
@@ -225,6 +217,37 @@ select {
     color: var(--primary-colour);
     background-color: var(--background-colour);
     font-weight: bold;
+}
+
+#matchesTable {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+#matchesTable th {
+    text-align: left;
+    background-color: var(--primary-colour);
+    color: var(--background-colour);
+    padding: 10px;
+}
+
+#matchesTable td {
+    text-align: left;
+    padding: 10px;
+    background-color: var(--form-background-colour);
+}
+
+#matchesTable th, #matchesTable td {
+    border-bottom: 1px solid var(--border-colour);
+}
+
+#matchesTable th:last-child, #matchesTable td:last-child {
+    padding-right: 15px;
+}
+
+#matchesTable th:first-child, #matchesTable td:first-child {
+    padding-left: 15px;
 }
 
 @media (max-width: 768px) {
