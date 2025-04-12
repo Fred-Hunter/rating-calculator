@@ -1,9 +1,10 @@
 :root {
     --primary-color: #ff206e;
-    --primary-hover-color: #e01a63;
+    --primary-hover-color: #c40b4f;
     --secondary-color: #ffbdd4;
+    --secondary-hover-color: #fd9bbd;
     --background-color: #ffffff;
-    --dots-background-color: #fae9ef;
+    --dots-background-color: #ffedf5;
     --text-color: #333;
     --border-color: #ffbdd4;
     --form-background-color: #ffe5ee;
@@ -90,6 +91,14 @@ button {
     font-size: 16px;
     transition: background-color 0.3s ease;
     max-width: 180px;
+}
+
+.delete-button {
+    background-color: var(--secondary-color);
+}
+
+.delete-button:hover {
+    background-color: var(--secondary-hover-color);
 }
 
 button:hover {

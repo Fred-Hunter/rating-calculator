@@ -96,6 +96,7 @@ function updateMatchesTable(matches) {
         const actionsCell = document.createElement("td");
         const deleteButton = document.createElement("button");
         deleteButton.textContent = "Remove";
+        deleteButton.className = "delete-button";
         deleteButton.addEventListener("click", () => removeMatch(index));
         actionsCell.appendChild(deleteButton);
         row.appendChild(actionsCell);
