@@ -85,7 +85,7 @@ button {
     cursor: pointer;
     font-size: 16px;
     transition: background-color 0.3s ease;
-    max-width: 320px;
+    max-width: 180px;
 }
 
 button:hover {
@@ -212,4 +212,36 @@ select {
     color: var(--primary-color);
     background-color: var(--background-color);
     font-weight: bold;
+}
+
+@media (max-width: 768px) {
+    main {
+        width: 100%;
+        padding: 15px;
+    }
+
+    h1 {
+        font-size: 24px;
+    }
+
+    form {
+        padding: 15px;
+    }
+
+    textarea {
+        height: 120px;
+    }
+
+    button {
+        font-size: 14px;
+        padding: 8px 16px;
+    }
+
+    table {
+        font-size: 14px;
+    }
+
+    table th, table td {
+        padding: 8px;
+    }
 }
