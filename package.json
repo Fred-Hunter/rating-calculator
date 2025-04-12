@@ -10,6 +10,7 @@
     "@babel/preset-env": "^7.22.9"
   },
   "scripts": {
+    "watch": "webpack --watch",
     "build": "webpack"
   }
 }
