@@ -126,7 +126,12 @@ select {
 }
 
 #matchesTableContainer {
-    padding-top: 20px;
+    background-color: var(--background-colour);
+    padding: 20px;
+    border-radius: 8px;
+    border: 1px solid var(--border-colour);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin-top: 20px;
 }
 
 h3 {
@@ -276,7 +281,7 @@ h3 {
 #matchesTable {
     width: 100%;
     border-collapse: collapse;
-    margin-top: 20px;
+    margin-top: 10px;
 }
 
 #matchesTable th {
