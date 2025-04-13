@@ -87,8 +87,8 @@ function loadAndProcessMatches() {
     const storedMatches = loadMatches();
     if (storedMatches.length > 0) {
         processMatches(storedMatches);
-        updateMatchesTable(storedMatches);
     }
+    updateMatchesTable(storedMatches);
 }
 
 function updateMatchesTable(matches) {
@@ -252,6 +252,7 @@ function clearMatches() {
     localStorage.removeItem("matches");
     initGlicko();
     document.getElementById("rankings").style.display = "none";
+    loadAndProcessMatches();
 }
 
 function addClearMatchesListener() {
