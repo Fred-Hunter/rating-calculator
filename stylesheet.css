@@ -122,6 +122,7 @@ select {
     border-radius: 8px;
     border: 1px solid var(--border-colour);
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin-top: 20px;
 }
 
 #matchesTableContainer {
@@ -134,6 +135,45 @@ h3 {
     font-family: 'Arial', sans-serif;
     font-size: 20px;
     text-align: center;
+}
+
+#rankings h3 {
+    margin-top: 0;
+    color: var(--primary-colour);
+    font-family: 'Arial', sans-serif;
+    font-size: 20px;
+    text-align: center;
+}
+
+#rankings table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 10px;
+}
+
+#rankings th {
+    text-align: left;
+    background-color: var(--primary-colour);
+    color: var(--background-colour);
+    padding: 10px;
+}
+
+#rankings td {
+    text-align: left;
+    padding: 10px;
+    background-color: var(--form-background-colour);
+}
+
+#rankings th, #rankings td {
+    border-bottom: 1px solid var(--border-colour);
+}
+
+#rankings th:last-child, #rankings td:last-child {
+    padding-right: 15px;
+}
+
+#rankings th:first-child, #rankings td:first-child {
+    padding-left: 15px;
 }
 
 #rankings ul {

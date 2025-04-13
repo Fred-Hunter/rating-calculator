@@ -36,26 +36,51 @@ window.onload = (e) => {
 };
 
 function showRankings() {
-	players.sort((pl1, pl2) => pl2.glicko.getRating() - pl1.glicko.getRating());
+    players.sort((pl1, pl2) => pl2.glicko.getRating() - pl1.glicko.getRating());
 
-	const rankingsDiv = document.getElementById("rankings");
-	rankingsDiv.innerHTML = "";
+    const rankingsDiv = document.getElementById("rankings");
+    rankingsDiv.innerHTML = "";
 
-	const title = document.createElement("h3");
-	title.textContent = "Rankings";
-	rankingsDiv.appendChild(title);
+    const title = document.createElement("h3");
+    title.textContent = "Rankings";
+    rankingsDiv.appendChild(title);
 
-	const list = document.createElement("ul");
-	players.forEach((player) => {
-		const listItem = document.createElement("li");
-		const rating = player.glicko.getRating().toFixed(1);
-		const deviation = player.glicko.getRd().toFixed(1);
-		listItem.textContent = `${player.name}: ${rating} (rd: ${deviation})`;
-		list.appendChild(listItem);
-	});
-	rankingsDiv.appendChild(list);
+    const table = document.createElement("table");
+    const thead = document.createElement("thead");
+    const headerRow = document.createElement("tr");
 
-	rankingsDiv.style.display = "block";
+    ["Player", "Rating", "RD"].forEach((headerText) => {
+        const th = document.createElement("th");
+        th.textContent = headerText;
+        headerRow.appendChild(th);
+    });
+
+    thead.appendChild(headerRow);
+    table.appendChild(thead);
+
+    const tbody = document.createElement("tbody");
+    players.forEach((player) => {
+        const row = document.createElement("tr");
+
+        const nameCell = document.createElement("td");
+        nameCell.textContent = player.name;
+        row.appendChild(nameCell);
+
+        const ratingCell = document.createElement("td");
+        ratingCell.textContent = player.glicko.getRating().toFixed(1);
+        row.appendChild(ratingCell);
+
+        const rdCell = document.createElement("td");
+        rdCell.textContent = player.glicko.getRd().toFixed(1);
+        row.appendChild(rdCell);
+
+        tbody.appendChild(row);
+    });
+
+    table.appendChild(tbody);
+    rankingsDiv.appendChild(table);
+
+    rankingsDiv.style.display = "block";
 }
 
 function loadAndProcessMatches() {
