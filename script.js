@@ -119,11 +119,14 @@ function updateMatchesTable(matches) {
         row.appendChild(weekCell);
 
         const actionsCell = document.createElement("td");
-        const deleteButton = document.createElement("button");
-        deleteButton.textContent = "Remove";
-        deleteButton.className = "delete-button";
-        deleteButton.addEventListener("click", () => removeMatch(index));
-        actionsCell.appendChild(deleteButton);
+        const deleteIcon = document.createElement("img");
+        deleteIcon.src = "./bin-icon.svg";
+        deleteIcon.alt = "Delete";
+        deleteIcon.className = "delete-icon";
+        deleteIcon.style.display = "block";
+        deleteIcon.style.margin = "auto";
+        deleteIcon.addEventListener("click", () => removeMatch(index));
+        actionsCell.appendChild(deleteIcon);
         row.appendChild(actionsCell);
 
         tableBody.appendChild(row);

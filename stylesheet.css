@@ -309,6 +309,19 @@ h3 {
     padding-left: 15px;
 }
 
+.delete-icon {
+    width: 32px;
+    height: 32px;
+    cursor: pointer;
+    transition: transform 0.2s ease;
+    display: block;
+    margin: 0 auto;
+}
+
+.delete-icon:hover {
+    transform: scale(1.2);
+}
+
 @media (max-width: 768px) {
     main {
         width: 100%;
